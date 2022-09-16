@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>SwagLabs_Ivan_Kovalevskiy</artifactId>
+    <artifactId>Graduation_Project_By_QASE</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -14,7 +14,7 @@
         <aspectj.version>1.9.8</aspectj.version>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
-        <suiteXmlFile>negativeTests.xml</suiteXmlFile>
+        <suiteXmlFile>testing.xml</suiteXmlFile>
     </properties>
 
     <dependencies>
