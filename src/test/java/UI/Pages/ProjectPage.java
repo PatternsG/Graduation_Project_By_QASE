@@ -1,5 +1,6 @@
 package UI.Pages;
 
+import UI.Utils.PropertyReader;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -35,7 +36,8 @@ public class ProjectPage extends BasePage {
     private final String SIDE_BAR_BUTTON_LOCATOR = "//span[text()='%s']";
     private final String TEST_CASE_NAME_LOCATOR = "//div[contains (@class, 'jp0OXJ')]" +
             "/following-sibling::div/a[text()='%s']";
-
+    private final String SUITE_NAME = PropertyReader.getProperty("qase.suite_name");
+    private final String CONFIRM = "CONFIRM";
 
     public ProjectPage(WebDriver driver) {
         super(driver);
@@ -46,13 +48,7 @@ public class ProjectPage extends BasePage {
         waitWorElementOfDisplayed(SUITE_CREATE_BUTTON);
     }
 
-    @Override
-    public String currentURL() {
-        String currentUrl = driver.getCurrentUrl();
-        return currentUrl;
-    }
-
-    public void invisibilityOfElementLocated() {
+    public void waitInvisibilityOfElementLocated() {
         log.info("Waiting for an element to disappear");
         new WebDriverWait(driver, 5).
                 until(ExpectedConditions.invisibilityOfElementLocated(ALERT_LOCATOR));
@@ -92,7 +88,7 @@ public class ProjectPage extends BasePage {
                 i--;
             }
             driver.findElement(DELETE_TEST_CASE_BUTTON).click();
-            driver.findElement(DELETE_FORM_CONTROL).sendKeys("CONFIRM");
+            driver.findElement(DELETE_FORM_CONTROL).sendKeys(CONFIRM);
             driver.findElement(DELETE_LAST_BUTTON).click();
         }
     }
@@ -111,7 +107,7 @@ public class ProjectPage extends BasePage {
         driver.findElement(EDITE_BUTTON_LOCATOR).click();
         waitWorElementOfDisplayed(CHOICE_OF_SUITE_BUTTON_LOCATOR);
         driver.findElement(CHOICE_OF_SUITE_BUTTON_LOCATOR).click();
-        driver.findElement(By.xpath(String.format(CHOICE_OF_SUITE_DROPDOWN, "Smoke"))).click();
+        driver.findElement(By.xpath(String.format(CHOICE_OF_SUITE_DROPDOWN, SUITE_NAME))).click();
         driver.findElement(UPDATE_SUITE_BUTTON_LOCATOR).click();
 
     }
@@ -131,7 +127,7 @@ public class ProjectPage extends BasePage {
 
     public void clickDeleteSuiteButton() {
         log.info("Deleting a created suite");
-        WebElement element = driver.findElement(By.xpath(String.format(DELETE_SUITE_BUTTON, "Smoke")));
+        WebElement element = driver.findElement(By.xpath(String.format(DELETE_SUITE_BUTTON, SUITE_NAME)));
         element.click();
         driver.findElement(CONFIRM_DELETE_SUITE_BUTTON).click();
         waitForPageLoaded();

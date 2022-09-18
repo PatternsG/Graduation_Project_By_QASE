@@ -31,7 +31,7 @@ public class SuiteTests extends AfterTests {
         projectsPage.openProject("QASE");
         projectPage.waitForPageLoaded();
         newSuitePage.createTestCase(inputTestCase);
-        projectPage.invisibilityOfElementLocated();
+        projectPage.waitInvisibilityOfElementLocated();
         projectPage.movingTestCasesToSuite();
         Assert.assertEquals(projectPage.getAlertText(), "3 test cases were successfully updated");
         Thread.sleep(2000);

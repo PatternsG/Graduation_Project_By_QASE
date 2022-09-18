@@ -19,7 +19,10 @@ public abstract class BasePage {
 
     public abstract void waitForPageLoaded();
 
-    public abstract String currentURL();
+    public String currentURL() {
+        String currentURL = driver.getCurrentUrl();
+        return currentURL;
+    }
 
     public void waitWorElementOfDisplayed(By locator) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));

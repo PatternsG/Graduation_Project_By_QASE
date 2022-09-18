@@ -8,12 +8,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 
-public class Combobox extends BaseElement {
+public class ComboboxByDefect extends BaseElement {
 
     private final String COMBOBOX_NAME_LOCATOR =
             "//label[text()='%s']//following-sibling::div[@class='flex-grow-1 css-2b097c-container']";
 
-    public Combobox(WebDriver driver, String label) {
+    public ComboboxByDefect(WebDriver driver, String label) {
         super(driver, label);
     }
 

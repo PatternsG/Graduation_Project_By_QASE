@@ -5,12 +5,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class Combobox extends BaseElement {
+public class ComboboxByTestCase extends BaseElement {
 
     private final String COMBOBOX_LOCATOR = "//div[@class='RZYgph']//ancestor::div[@class='tuLXOo']" +
             "//div//label[text()='%s']//following-sibling::div//*[@class='RZYgph']";
 
-    public Combobox(WebDriver driver, String label) {
+    public ComboboxByTestCase(WebDriver driver, String label) {
         super(driver, label);
     }
 

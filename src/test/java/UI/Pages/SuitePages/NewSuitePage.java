@@ -1,6 +1,6 @@
 package UI.Pages.SuitePages;
 
-import UI.Elements.NewSuitePage.Input;
+import UI.Elements.NewTestCasePage.Input;
 import UI.Models.Suite;
 import UI.Models.TestCase;
 import UI.Pages.BasePage;
@@ -25,11 +25,6 @@ public class NewSuitePage extends BasePage {
     @Override
     public void waitForPageLoaded() {
         waitWorElementOfDisplayed(SAVE_SUITE_BUTTON_LOCATOR);
-    }
-
-    @Override
-    public String currentURL() {
-        return driver.getCurrentUrl();
     }
 
     public void createTestCase(TestCase inputTestCase) {

@@ -1,27 +1,28 @@
 package UI.Allure;
 
-import UI.Allure.AllureUtils;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+@Log4j2
 public class TestListener implements ITestListener {
     @Override
     public void onTestStart(ITestResult result) {
         ITestListener.super.onTestStart(result);
-        System.out.println("Test " + result.getName() + " started");
+        log.info("Test %s started", result.getName());
     }
     @Override
     public void onTestSuccess(ITestResult result) {
         ITestListener.super.onTestSuccess(result);
-        System.out.println("Test " + result.getName() + " finished");
+        log.info("Test %s finished", result.getName());
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
 
         ITestListener.super.onTestFailure(result);
-        System.out.println("Test " + result.getName() + " failed");
+        log.info("Test %s failed", result.getName());
         WebDriver driver = (WebDriver) result.getTestContext().getAttribute("driver");
         AllureUtils.attachScreenshot(driver);
     }

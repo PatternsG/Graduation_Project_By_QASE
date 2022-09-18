@@ -21,12 +21,6 @@ public class LoginPage extends BasePage {
         waitWorElementOfDisplayed(LOGIN_BUTTON_LOCATOR);
     }
 
-    @Override
-    public String currentURL() {
-        String currentUrl = driver.getCurrentUrl();
-        return currentUrl;
-    }
-
     public void initialization(String email, String password) {
         setEmail(email);
         setPassword(password);

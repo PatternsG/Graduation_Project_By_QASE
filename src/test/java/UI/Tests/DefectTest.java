@@ -9,7 +9,7 @@ public class DefectTest extends AfterTests {
 
     @Test(groups = {"Delete_Defects", "Positive"}, dataProvider = "defectDataProvider",
             dataProviderClass = DefectDataProvider.class)
-    public void createDefectPositiveTest(Defects inputDefect) throws InterruptedException {
+    public void createDefectPositiveTest(Defects inputDefect){
         loginPage.setEmail(EMAIL);
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();

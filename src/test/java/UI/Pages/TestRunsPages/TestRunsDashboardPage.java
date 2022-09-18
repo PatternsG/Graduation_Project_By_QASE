@@ -1,6 +1,5 @@
 package UI.Pages.TestRunsPages;
 
-import UI.Enums.Defects.Assignee;
 import UI.Enums.TestRuns.TestStatus;
 import UI.Enums.TestRuns.UpdateSelected;
 import UI.Pages.BasePage;
@@ -30,6 +29,7 @@ public class TestRunsDashboardPage extends BasePage {
     private final static By CLOSE_FORM = By.xpath("//button[@class='btn btn-danger']");
     private final static String DROPDOWN_ITEM =
             "//div[@class='dropdown-menu dropdown-menu-end show']/div/a[text()='%s']";
+    private final String KOVALEVSKIY_IVAN = "Kovalevskiy Ivan";
 
     public TestRunsDashboardPage(WebDriver driver) {
         super(driver);
@@ -38,11 +38,6 @@ public class TestRunsDashboardPage extends BasePage {
     @Override
     public void waitForPageLoaded() {
         waitWorElementOfDisplayed(PAGE_LOADED_LOCATOR);
-    }
-
-    @Override
-    public String currentURL() {
-        return null;
     }
 
     public void assignToMember() {
@@ -56,8 +51,7 @@ public class TestRunsDashboardPage extends BasePage {
         log.info("Appointment of an executor for test cases");
         WebElement element = driver.findElement(SELECT_MEMBER);
         Actions actions = new Actions(driver);
-        actions.moveToElement(element).click().sendKeys
-                (Assignee.KOVALEVSIY_IVAN.getName()).sendKeys(Keys.ENTER).build().perform();
+        actions.moveToElement(element).click().sendKeys(KOVALEVSKIY_IVAN).sendKeys(Keys.ENTER).build().perform();
     }
 
     public void clickAssignButton() {

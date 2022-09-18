@@ -1,6 +1,6 @@
 package UI.Pages.TestCasePages;
 
-import UI.Elements.NewTestCasePage.Combobox;
+import UI.Elements.NewTestCasePage.ComboboxByTestCase;
 import UI.Elements.NewTestCasePage.Input;
 import UI.Elements.NewTestCasePage.MultiLineInput;
 import UI.Models.TestCase;
@@ -21,32 +21,26 @@ public class NewTestCasePage extends BasePage {
         waitWorElementOfDisplayed(SAVE_BUTTON);
     }
 
-    @Override
-    public String currentURL() {
-        String currentURL = driver.getCurrentUrl();
-        return currentURL;
-    }
-
     public void fillForm(TestCase inputTestCase) {
         new Input(driver, "Title")
                 .setValue(inputTestCase.getTitle());
-        new Combobox(driver, "Status")
+        new ComboboxByTestCase(driver, "Status")
                 .selectByVisibleText(inputTestCase.getStatus().getName());
         new MultiLineInput(driver, "Description")
                 .setValue(inputTestCase.getDescription());
-        new Combobox(driver, "Suite")
+        new ComboboxByTestCase(driver, "Suite")
                 .selectByVisibleText(inputTestCase.getSuite());
-        new Combobox(driver, "Severity")
+        new ComboboxByTestCase(driver, "Severity")
                 .selectByVisibleText(inputTestCase.getSeverity().getName());
-        new Combobox(driver, "Priority")
+        new ComboboxByTestCase(driver, "Priority")
                 .selectByVisibleText(inputTestCase.getPriority().getName());
-        new Combobox(driver, "Type")
+        new ComboboxByTestCase(driver, "Type")
                 .selectByVisibleText(inputTestCase.getType().getName());
-        new Combobox(driver, "Layer")
+        new ComboboxByTestCase(driver, "Layer")
                 .selectByVisibleText(inputTestCase.getLayer().getName());
-        new Combobox(driver, "Is flaky")
+        new ComboboxByTestCase(driver, "Is flaky")
                 .selectByVisibleText(inputTestCase.getIsFlaky().getName());
-        new Combobox(driver, "Automation status")
+        new ComboboxByTestCase(driver, "Automation status")
                 .selectByVisibleText(inputTestCase.getAutomationStatus().getName());
         new MultiLineInput(driver, "Pre-conditions").
                 setValue(inputTestCase.getPreConditions());

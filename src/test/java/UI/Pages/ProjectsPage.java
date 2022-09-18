@@ -20,12 +20,6 @@ public class ProjectsPage extends BasePage {
         waitWorElementOfDisplayed(PAGE_LOADED_LOCATOR);
     }
 
-    @Override
-    public String currentURL() {
-        String currentUrl = driver.getCurrentUrl();
-        return currentUrl;
-    }
-
     public boolean isDisplayed() {
         return driver.findElement(PAGE_LOADED_LOCATOR).isDisplayed();
     }

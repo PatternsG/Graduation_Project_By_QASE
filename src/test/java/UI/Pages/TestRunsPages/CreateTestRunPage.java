@@ -27,12 +27,6 @@ public class CreateTestRunPage extends BasePage {
         waitWorElementOfDisplayed(ADD_CASES_BUTTON);
     }
 
-    @Override
-    public String currentURL() {
-        String currentURL = driver.getCurrentUrl();
-        return currentURL;
-    }
-
     public void clickStartRunButton() {
         driver.findElement(START_RUN_BUTTON).click();
     }

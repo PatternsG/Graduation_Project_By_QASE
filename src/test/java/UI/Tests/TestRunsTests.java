@@ -19,7 +19,7 @@ public class TestRunsTests extends AfterTests {
         newTestCasePage.fillForm(testCase);
         newTestCasePage.clickSaveButton();
         projectPage.waitForPageLoaded();
-        projectPage.invisibilityOfElementLocated();
+        projectPage.waitInvisibilityOfElementLocated();
         projectPage.clickToSideBarButton("Test Runs");
         testRunsPage.waitForPageLoaded();
         testRunsPage.clickNewTestRunButton();

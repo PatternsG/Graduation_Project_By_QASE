@@ -31,12 +31,6 @@ public class TestRunsPage extends BasePage {
         waitWorElementOfDisplayed(TEST_RUN_NAME);
     }
 
-    @Override
-    public String currentURL() {
-        String currentURL = driver.getCurrentUrl();
-        return currentURL;
-    }
-
     public void clickNewTestRunButton() {
         driver.findElement(NEW_TEST_RUN_BUTTON).click();
     }

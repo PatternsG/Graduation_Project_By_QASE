@@ -1,7 +1,6 @@
 package UI.Pages.DefectPages;
 
 import UI.Elements.NewDefectPage.GetTextDefects;
-import UI.Enums.Defects.Assignee;
 import UI.Enums.TestCase.Severity;
 import UI.Models.Defects;
 import UI.Pages.BasePage;
@@ -9,6 +8,9 @@ import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 @Log4j2
 public class DefectsPage extends BasePage {
@@ -22,6 +24,7 @@ public class DefectsPage extends BasePage {
             ("(//tr[@class='project-row'])[2]//div[@class='dropdown']//a[@class='text-danger']");
     private final static By TITLE_LOCATOR = By.xpath("//button[@class='sYQsX9']//ancestor::h1");
     private final static By DELETION_CONFIRMATION_LOCATOR = By.xpath("//span[text()='Delete']");
+    private final static By DEFECT_TITLE = By.xpath("//a[@class='defect-title']");
 
     public DefectsPage(WebDriver driver) {
         super(driver);
@@ -30,12 +33,6 @@ public class DefectsPage extends BasePage {
     @Override
     public void waitForPageLoaded() {
         waitWorElementOfDisplayed(PAGE_LOADED_LOCATOR);
-    }
-
-    @Override
-    public String currentURL() {
-        String currentUrl = driver.getCurrentUrl();
-        return currentUrl;
     }
 
     public void clickCreateNewDefectsButton() {
@@ -67,7 +64,7 @@ public class DefectsPage extends BasePage {
         }
         String assignee = new GetTextDefects(driver, "Assignee").getGenericText();
         if (assignee != "") {
-            defectsBuilder.assignee(Assignee.fromString(assignee));
+            defectsBuilder.assignee(assignee);
         }
         return defectsBuilder.build();
     }
@@ -83,16 +80,17 @@ public class DefectsPage extends BasePage {
 
     public void deleteDefects() {
         log.info("Remove all defects until 1 remains");
-        for (int i = 1; i > 0; i++) {
-            boolean haveOrNot = haveOrNot();
-            if (haveOrNot == true) {
+        List<WebElement> allDefects = driver.findElements(DEFECT_TITLE);
+        int size = allDefects.size();
+        if (size > 1) {
+            for (int i = 1; i < size; i++) {
                 driver.findElement(TWO_DEFECT_LOCATOR).click();
                 driver.findElement(DELETE_DEFECT_LOCATOR).click();
                 waitWorElementOfDisplayed(DELETION_CONFIRMATION_LOCATOR);
                 driver.findElement(DELETION_CONFIRMATION_LOCATOR).click();
                 waitForPageLoaded();
                 driver.navigate().refresh();
-            } else break;
+            }
         }
     }
 

@@ -17,11 +17,6 @@ public class HeaderPage extends BasePage {
         waitWorElementOfDisplayed(ICON_ACCOUNT_BUTTON);
     }
 
-    @Override
-    public String currentURL() {
-        return null;
-    }
-
     public void logOut() {
         waitWorElementOfDisplayed(ICON_ACCOUNT_BUTTON);
         driver.findElement(ICON_ACCOUNT_BUTTON).click();

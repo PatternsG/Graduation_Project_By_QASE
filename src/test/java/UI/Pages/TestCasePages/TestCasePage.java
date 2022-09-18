@@ -1,6 +1,6 @@
 package UI.Pages.TestCasePages;
 
-import UI.Elements.TestCasePage.Combobox;
+import UI.Elements.TestCasePage.ComboboxByTestCase;
 import UI.Elements.TestCasePage.GetTextTestCase;
 import UI.Enums.TestCase.*;
 import UI.Models.TestCase;
@@ -38,7 +38,7 @@ public class TestCasePage extends BasePage {
         if (title != "") {
             testCaseBuilder.title(title);
         }
-        String status = new Combobox(driver, "Status").getText();
+        String status = new ComboboxByTestCase(driver, "Status").getText();
         if (status != "") {
             testCaseBuilder.status(Status.fromString(status));
         }
@@ -46,27 +46,27 @@ public class TestCasePage extends BasePage {
         if (description != "") {
             testCaseBuilder.description(description);
         }
-        String severity = new Combobox(driver, "Severity").getText();
+        String severity = new ComboboxByTestCase(driver, "Severity").getText();
         if (severity != "") {
             testCaseBuilder.severity(Severity.fromString(severity));
         }
-        String priority = new Combobox(driver, "Priority").getText();
+        String priority = new ComboboxByTestCase(driver, "Priority").getText();
         if (priority != "") {
             testCaseBuilder.priority(Priority.fromString(priority));
         }
-        String type = new Combobox(driver, "Type").getText();
+        String type = new ComboboxByTestCase(driver, "Type").getText();
         if (type != "") {
             testCaseBuilder.type(Type.fromString(type));
         }
-        String layer = new Combobox(driver, "Layer").getText();
+        String layer = new ComboboxByTestCase(driver, "Layer").getText();
         if (layer != "") {
             testCaseBuilder.layer(Layer.fromString(layer));
         }
-        String isFlaky = new Combobox(driver, "Is flaky").getText();
+        String isFlaky = new ComboboxByTestCase(driver, "Is flaky").getText();
         if (isFlaky != "") {
             testCaseBuilder.isFlaky(Bool.fromString(isFlaky));
         }
-        String automationStatus = new Combobox(driver, "Automation status").getText();
+        String automationStatus = new ComboboxByTestCase(driver, "Automation status").getText();
         if (automationStatus != "") {
             testCaseBuilder.automationStatus(AutomationStatus.fromString(automationStatus));
         }
@@ -79,10 +79,5 @@ public class TestCasePage extends BasePage {
             testCaseBuilder.postConditions(postConditions);
         }
         return testCaseBuilder.build();
-    }
-
-    @Override
-    public String currentURL() {
-        return driver.getCurrentUrl();
     }
 }
