@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 
 public class DefectTest extends AfterTests {
 
+    private final String EXPECTED_DEFECT_CREATED = "Defect was created successfully!";
+
     @Test(groups = {"Delete_Defects", "Positive"}, dataProvider = "defectDataProvider",
             dataProviderClass = DefectDataProvider.class)
     public void createDefectPositiveTest(Defects inputDefect){
@@ -14,9 +16,9 @@ public class DefectTest extends AfterTests {
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
         projectsPage.waitForPageLoaded();
-        projectsPage.openProject("Demo Project");
+        projectsPage.openProject(DEMO_PROJECT);
         projectPage.waitForPageLoaded();
-        projectPage.clickToSideBarButton("Defects");
+        projectPage.clickToSideBarButton(DEFECTS);
         defectsPage.waitForPageLoaded();
         defectsPage.clickCreateNewDefectsButton();
         newDefectPage.waitForPageLoaded();
@@ -24,7 +26,7 @@ public class DefectTest extends AfterTests {
         newDefectPage.clickCreateDefectButton();
         defectsPage.waitForPageLoaded();
         defectsPage.clickLastDefectButton();
-        Assert.assertEquals(defectsPage.getAlertText(), "Defect was created successfully!");
+        Assert.assertEquals(defectsPage.getAlertText(), EXPECTED_DEFECT_CREATED);
         Assert.assertEquals(defectsPage.getDefectInfo(), inputDefect);
 
     }
@@ -35,9 +37,9 @@ public class DefectTest extends AfterTests {
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
         projectsPage.waitForPageLoaded();
-        projectsPage.openProject("Demo Project");
+        projectsPage.openProject(DEMO_PROJECT);
         projectPage.waitForPageLoaded();
-        projectPage.clickToSideBarButton("Defects");
+        projectPage.clickToSideBarButton(DEFECTS);
         defectsPage.waitForPageLoaded();
         defectsPage.clickCreateNewDefectsButton();
         newDefectPage.waitForPageLoaded();

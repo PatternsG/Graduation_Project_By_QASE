@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 
 public class TestCaseTests extends AfterTests {
 
+    private final String EXPECTED_TEST_CASE_CREATED = "Test case was created successfully!";
+
     @Test(groups = {"Delete_Test_Case", "Positive"},
             dataProvider = "testCaseDataProvider", dataProviderClass = TestCaseDataProvider.class)
     public void createTestCasePositiveTest(TestCase inputTestCase) {
@@ -14,7 +16,7 @@ public class TestCaseTests extends AfterTests {
         loginPage.setPassword(PASSWORD);
         loginPage.clickLoginButton();
         projectsPage.waitForPageLoaded();
-        projectsPage.openProject("QASE");
+        projectsPage.openProject(QASE);
         projectPage.waitForPageLoaded();
         projectPage.clickNewTestCaseButton();
         newTestCasePage.waitForPageLoaded();
@@ -24,7 +26,7 @@ public class TestCaseTests extends AfterTests {
         testCasePage.getSuiteText();
         projectPage.clickTestCaseButton();
         testCasePage.waitForPageLoaded();
-        Assert.assertEquals(actualResult, "Test case was created successfully!");
+        Assert.assertEquals(actualResult, EXPECTED_TEST_CASE_CREATED);
         Assert.assertEquals(testCasePage.getTestCaseInfo(), inputTestCase);
         testCasePage.clickCloseTestCase();
     }
@@ -33,7 +35,7 @@ public class TestCaseTests extends AfterTests {
     public void createTestCaseNegativeTest() {
         loginPage.initialization(EMAIL, PASSWORD);
         projectsPage.waitForPageLoaded();
-        projectsPage.openProject("QASE");
+        projectsPage.openProject(QASE);
         projectPage.waitForPageLoaded();
         projectPage.clickNewTestCaseButton();
         newTestCasePage.waitForPageLoaded();
