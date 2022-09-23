@@ -41,10 +41,10 @@ public class CreateTestRunPage extends BasePage {
         driver.findElement(SUITE_LOCATOR).click();
     }
 
-    public void addTestCases() {
+    public void addTestCases(int size) {
         log.info("Adding Test Cases to a Test Run");
         List<WebElement> elem = driver.findElements(TEST_CASES_LOCATOR);
-        for (int i = 1; i < 4; i++) {
+        for (int i = 1; i < size + 1; i++) {
             if (elem.size() - i < 0) {
                 break;
             }

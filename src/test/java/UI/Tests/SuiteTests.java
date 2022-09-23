@@ -28,12 +28,13 @@ public class SuiteTests extends AfterTests {
 
     @Test(groups = {"Delete_Suite", "Positive"}, dependsOnMethods = {"createSuitePositiveTest"},
             dataProvider = "testCaseDataProvider", dataProviderClass = TestCaseDataProvider.class)
-    public void movingTestCasesToSuitePositiveTest(TestCase inputTestCase){
+    public void movingTestCasesToSuitePositiveTest(TestCase inputTestCase) throws InterruptedException {
         loginPage.initialization(EMAIL, PASSWORD);
         projectsPage.waitForPageLoaded();
         projectsPage.openProject(QASE);
         projectPage.waitForPageLoaded();
-        newSuitePage.createTestCase(inputTestCase);
+        newSuitePage.createTestCase(inputTestCase, 3);
+        Thread.sleep(2000);
         projectPage.waitInvisibilityOfElementLocated();
         projectPage.movingTestCasesToSuite();
         Assert.assertEquals(projectPage.getAlertText(), EXPECTED_TEST_CASE_UPDATE);

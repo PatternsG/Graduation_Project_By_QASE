@@ -46,11 +46,11 @@ public abstract class BaseTest {
 
     @BeforeClass(alwaysRun = true)
     @Parameters("browser")
-    public void setup(@Optional("chrome") String browser, ITestContext testContext) throws Exception {
-        if (browser.equalsIgnoreCase("firefox")) {
+    public void setup(@Optional("Chrome") String browser, ITestContext testContext) throws Exception {
+        if (browser.equalsIgnoreCase("Opera")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("chrome")) {
+        } else if (browser.equalsIgnoreCase("Chrome")) {
             WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         } else {

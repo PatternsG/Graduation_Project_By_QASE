@@ -27,11 +27,11 @@ public class NewSuitePage extends BasePage {
         waitWorElementOfDisplayed(SAVE_SUITE_BUTTON_LOCATOR);
     }
 
-    public void createTestCase(TestCase inputTestCase) {
+    public void createTestCase(TestCase inputTestCase, int size) {
         log.info("Creation of 3 test cases");
         projectPage = new ProjectPage(driver);
         newTestCasePage = new NewTestCasePage(driver);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < size; i++) {
             projectPage.clickNewTestCaseButton();
             newTestCasePage.waitForPageLoaded();
             newTestCasePage.fillForm(inputTestCase);

@@ -30,7 +30,7 @@ public class TestRunsTests extends AfterTests {
         createTestRunPage.waitForPageLoaded();
         createTestRunPage.clickAddCasesButton();
         createTestRunPage.clickSuiteButton();
-        createTestRunPage.addTestCases();
+        createTestRunPage.addTestCases(3);
         Assert.assertEquals(testRunsPage.getAlertText(), EXPECTED_TEST_RUN_CREATED);
     }
 
