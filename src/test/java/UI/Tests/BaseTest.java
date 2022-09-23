@@ -1,5 +1,6 @@
 package UI.Tests;
 
+import UI.Allure.TestListener;
 import UI.Pages.DefectPages.DefectsPage;
 import UI.Pages.DefectPages.NewDefectPage;
 import UI.Pages.SuitePages.NewSuitePage;
@@ -20,6 +21,7 @@ import org.testng.annotations.*;
 
 import java.util.concurrent.TimeUnit;
 
+@Listeners(TestListener.class)
 public abstract class BaseTest {
 
     protected final String EMAIL = System.getenv().getOrDefault("EMAIL",
@@ -44,7 +46,7 @@ public abstract class BaseTest {
 
     @BeforeClass(alwaysRun = true)
     @Parameters("browser")
-    public void setup(/*@Optional("chrome")*/ String browser, ITestContext testContext) throws Exception {
+    public void setup(@Optional("chrome") String browser, ITestContext testContext) throws Exception {
         if (browser.equalsIgnoreCase("firefox")) {
             WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
