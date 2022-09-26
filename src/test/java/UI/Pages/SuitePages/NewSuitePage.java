@@ -2,7 +2,6 @@ package UI.Pages.SuitePages;
 
 import UI.Elements.NewTestCasePage.Input;
 import UI.Models.Suite;
-import UI.Models.TestCase;
 import UI.Pages.BasePage;
 import UI.Pages.ProjectPage;
 import UI.Pages.TestCasePages.NewTestCasePage;
@@ -14,9 +13,6 @@ import org.openqa.selenium.WebDriver;
 public class NewSuitePage extends BasePage {
     private final static By SAVE_SUITE_BUTTON_LOCATOR = By.id("save-suite-button");
     private final static By ALERT_LOCATOR = By.xpath("//span[@class = 'OL6rtE']");
-
-    private ProjectPage projectPage;
-    private NewTestCasePage newTestCasePage;
 
     public NewSuitePage(WebDriver driver) {
         super(driver);

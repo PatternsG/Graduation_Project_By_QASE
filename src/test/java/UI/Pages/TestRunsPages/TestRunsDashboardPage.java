@@ -68,6 +68,7 @@ public class TestRunsDashboardPage extends BasePage {
             element.click();
             driver.findElement(CLOSE_VERIFIED_TEST_CASE).click();
         }
+        waitForPageLoaded();
     }
 
     public String actualResult() {
