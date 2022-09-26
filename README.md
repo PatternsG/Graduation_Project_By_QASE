@@ -13,7 +13,7 @@ QASE.io это рабочее пространство для ручных и а
     TestNG
     Selenium
     
-В проекте использованы такие паттерны как Page Object, Builder, Wrapper, Value Object. 
+В проекте использованы такие паттерны как Page Object, Builder, Data Driven Testing. 
 Отчетность осуществляется фреймворком Allure Report
 
 ###  Чек-лист
