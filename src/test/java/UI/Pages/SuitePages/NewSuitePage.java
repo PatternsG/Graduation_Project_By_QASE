@@ -27,19 +27,6 @@ public class NewSuitePage extends BasePage {
         waitWorElementOfDisplayed(SAVE_SUITE_BUTTON_LOCATOR);
     }
 
-    public void createTestCase(TestCase inputTestCase, int size) {
-        log.info("Creation of 3 test cases");
-        projectPage = new ProjectPage(driver);
-        newTestCasePage = new NewTestCasePage(driver);
-        for (int i = 0; i < size; i++) {
-            projectPage.clickNewTestCaseButton();
-            newTestCasePage.waitForPageLoaded();
-            newTestCasePage.fillForm(inputTestCase);
-            newTestCasePage.clickSaveButton();
-            projectPage.waitForPageLoaded();
-        }
-    }
-
     public void fillForm(Suite inputSuite) {
         new Input(driver, "Suite name").setValue(inputSuite.getSuiteName());
         new Input(driver, "Description").setValue(inputSuite.getDescription());

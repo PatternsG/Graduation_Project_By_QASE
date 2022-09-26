@@ -10,11 +10,4 @@
         </packages>
     </test>
 
-  <!--  <test name="FirefoxTest">
-        <parameter name="browser" value="Firefox"/>
-        <packages>
-            <package name="UI.Tests"></package>
-        </packages>
-    </test>-->
-
 </suite>

@@ -1,4 +1,4 @@
-<suite name="Positive Tests" parallel="tests" thread-count="2">
+<suite name="Negative Tests" parallel="tests" thread-count="2">
     <parameter name="browser" value="Chrome"/>
     <test name="Positive tests">
         <groups>
