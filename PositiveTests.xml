@@ -1,0 +1,13 @@
+<suite name="Positive Tests" parallel="tests" thread-count="2">
+    <parameter name="browser" value="Chrome"/>
+    <test name="Positive tests">
+        <groups>
+            <run>
+                <include name="Positive"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="UI.Tests"/>
+        </packages>
+    </test>
+</suite>
